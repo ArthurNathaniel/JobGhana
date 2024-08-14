@@ -1,0 +1,42 @@
+.company_details_all{
+    padding: 0 35%;
+    margin-block: 50px;
+}
+.forms{
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+}
+
+.forms input{
+    height: 44px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1.5px solid #ddd;
+    padding-left: 3%;
+}
+
+.forms input:focus{
+    outline: none;
+}
+
+.forms select{
+    height: 44px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1.5px solid #ddd;
+    padding-left: 3%;
+}
+
+.forms select:focus{
+    outline: none;
+}
+
+.forms button{
+    background-color: #1c5947;
+    height: 44px;
+    width: 100%;
+    border-radius: 5px;
+    color: #fff;
+    border: none;
+}

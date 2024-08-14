@@ -1,0 +1,1 @@
+                    <!-- <a href="apply_job.php?id=<?php echo $row['id']; ?>" class="apply_button">Apply Now</a> -->

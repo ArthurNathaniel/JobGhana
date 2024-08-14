@@ -1,0 +1,13 @@
+.profile-section {
+    margin-bottom: 15px;
+    display: flex;
+}
+.edit-button {
+    margin-top: 15px;
+}
+.read-only {
+    border: none;
+    background: transparent;
+    color: #333;
+    padding: 5px 0;
+}
