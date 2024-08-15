@@ -71,21 +71,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="keywords" content="add job listing, JobGhana, employer, job details">
     <meta name="author" content="JobGhana">
     <title>Add Job Listing - JobGhana</title>
+    <?php include 'cdn.php'; ?>
     <link rel="stylesheet" href="./css/base.css">
-    <link rel="stylesheet" href="./css/add_job.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.snow.min.css">
-    <style>
-        .forms {
-            margin-bottom: 15px;
-        }
-
-        img {
-            max-width: 100px;
-            max-height: 100px;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/add_job.css">   
 </head>
 <body>
+<?php include 'navbar.php'; ?>
     <div class="all_pages">
         <?php include 'sidebar.php'; ?>
         <div class="main_page ">

@@ -91,6 +91,8 @@ $result = $stmt->get_result();
     </style>
 </head>
 <body>
+<?php include 'navbar.php'; ?>
+
     <div class="all_pages">
         <?php include 'sidebar.php'; ?>
         <div class="main_page job_listing_view">

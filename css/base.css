@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -12,35 +12,114 @@
 
 body {
     font-family: "Manrope", sans-serif;
-background-color: #F8FAFC;
+    background-color: #F8FAFC;
 }
 
 
-.header_all{
+.header_all {
     border-bottom: 1px solid #ddd;
     padding: 0 7%;
     padding-block: 30px;
     background-color: #fff;
 }
 
-.all_pages{
+.navbar_all {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 0 7%;
+    padding-block: 10px;
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.links {
+    /* border: 2px solid; */
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 250px;
+    background-color: #fff;
+    padding-top: 100px;
+    height: 100vh;
+    display: none;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.links a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+
+    text-decoration: none;
+    margin-top: 10px;
+    color: #333;
+    padding: 0 5%;
+    padding-block: 10px;
+}
+
+.links a.active {
+    background-color: #1c5947;
+    color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.logo {
+    width: 150px;
+    height: 70px;
+    background-image: url(../images/logo.png);
+    background-position: center;
+    background-size: cover;
+}
+
+#toggleButton {
+    padding: 10px;
+    border: none;
+    background-color: transparent;
+    /* position: absolute; */
+    z-index: 33244;
+
+
+}
+
+#toggleButton i {
+    color: #1c5947;
+    font-weight: 900;
+    font-size: 20px;
+}
+
+/* .links, #toggleButton {
+    position: absolute;
+    right: 0;
+   
+} */
+
+.logout {
+    position: absolute;
+    bottom: 30px;
+}
+
+.all_pages {
     display: grid;
     grid-template-columns: 1fr 4fr;
     padding: 0 7%;
     gap: 30px;
-    margin-block: 100px;
+    margin-block: 50px;
 }
-.sidebar_links{
+
+.sidebar_links {
     /* border: 1px solid #ddd; */
     height: 100%;
 }
 
-.sidebar_links a{
+.sidebar_links a {
     display: flex;
     flex-direction: column;
 }
 
-.main_page{
+.main_page {
     overflow-y: scroll;
     height: 100vh;
     /* border: 2px solid; */
@@ -49,7 +128,7 @@ background-color: #F8FAFC;
     padding-block: 50px !important;
 }
 
-.side_links{
+.side_links {
     border: 2px solid #ddd;
     border-radius: 10px;
     background-color: #fff;
@@ -57,10 +136,10 @@ background-color: #F8FAFC;
     padding-block: 20px;
 }
 
-.side_links a{
+.side_links a {
     text-decoration: none;
     margin-top: 10px;
-  
+
     padding: 0 5%;
     padding-block: 20px;
 }

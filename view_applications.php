@@ -27,25 +27,15 @@ $result = $stmt->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Job Applications</title>
+    <?php include 'cdn.php'; ?>
+
     <link rel="stylesheet" href="./css/base.css">
-    <link rel="stylesheet" href="./css/view_applications.css">
-    <style>
-        .application-card {
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-        }
-        .application-card h3 {
-            margin: 0;
-        }
-        .application-card a {
-            display: inline-block;
-            margin-top: 5px;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/applications.css">
+   
 </head>
 <body>
+<?php include 'navbar.php'; ?>
+
     <div class="all_pages">
         <?php include 'sidebar.php'; ?>
         <div class="main_page">

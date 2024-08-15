@@ -37,3 +37,11 @@
     border: none;
 }
 
+.forms {
+    margin-bottom: 15px;
+}
+
+img {
+    max-width: 100px;
+    max-height: 100px;
+}

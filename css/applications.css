@@ -1,0 +1,13 @@
+.application-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+.application-card h3 {
+    margin: 0;
+}
+.application-card a {
+    display: inline-block;
+    margin-top: 5px;
+}
