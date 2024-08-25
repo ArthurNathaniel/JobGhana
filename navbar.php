@@ -15,10 +15,7 @@
             <a href="job_listing.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'job_listing.php' ? 'active' : ''; ?>">Job Listing</a>
             <a href="bookmark_jobs.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'bookmark_jobs.php' ? 'active' : ''; ?>">Bookmarked Jobs</a>
         <?php endif; ?>
-        <div class="logout">
-            <div class="link">
-                <a href="">Home</a>
-            </div>
+    <div class="logout">
      <a href="logout.php">Logout</a>
     </div>
     </div>
