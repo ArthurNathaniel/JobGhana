@@ -26,69 +26,6 @@ $result = $stmt->get_result();
     <?php include 'cdn.php'; ?>
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/view_jobs.css">
-    <style>
-        .job-listing-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .job-listing-table th, .job-listing-table td {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
-        .job-listing-table th {
-            background-color: #1c5947;
-            color: #fff;
-        }
-        .job-listing-table img {
-            max-width: 100px;
-            max-height: 100px;
-        }
-        .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 1; 
-            left: 0;
-            top: 0;
-            width: 100%; 
-            height: 100%; 
-            overflow: auto; 
-            background-color: rgb(0,0,0); 
-            background-color: rgba(0,0,0,0.4); 
-            padding-top: 60px; 
-        }
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto; 
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%; 
-        }
-        .modal-content img{
-            width: 100px;
-            height: 100px;
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .actions{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 150px;
-        }
-        .actions a{
-            color: #000;
-        }
-    </style>
 </head>
 <body>
 <?php include 'navbar.php'; ?>

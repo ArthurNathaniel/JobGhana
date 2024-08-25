@@ -43,14 +43,13 @@ $result = $stmt->get_result();
             <?php if ($result->num_rows > 0): ?>
                 <?php while ($application = $result->fetch_assoc()): ?>
                     <div class="application-card">
-                        <h3>Job Title: <?php echo htmlspecialchars($application['job_title']); ?></h3>
+                        <p><strong>Job Title: </strong><?php echo htmlspecialchars($application['job_title']); ?></p>
                         <p><strong>Full Name:</strong> <?php echo htmlspecialchars($application['full_name']); ?></p>
                         <p><strong>Location:</strong> <?php echo htmlspecialchars($application['location']); ?></p>
                         <p><strong>Phone Number:</strong> <?php echo htmlspecialchars($application['phone_number']); ?></p>
                         <p><strong>Email:</strong> <?php echo htmlspecialchars($application['email']); ?></p>
-                        <a href="<?php echo htmlspecialchars($application['cv']); ?>" target="_blank">View CV</a>
-                        <a href="<?php echo htmlspecialchars($application['resume']); ?>" target="_blank">View Resume</a>
-                    </div>
+                        <p><strong>Open: </strong><a href="<?php echo htmlspecialchars($application['cv']); ?>" target="_blank">View CV</a></p>
+                        <p><strong>Open: </strong><a href="<?php echo htmlspecialchars($application['resume']); ?>" target="_blank">View Resume</a></p>                    </div>
                 <?php endwhile; ?>
             <?php else: ?>
                 <p>No applications found for your jobs.</p>

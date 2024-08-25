@@ -3,7 +3,7 @@ include 'db.php';
 session_start();
 
 if (!isset($_SESSION['job_seeker_id'])) {
-    header("Location: login.php");
+    header("Location: job_seekers_login.php");
     exit();
 }
 

@@ -1,11 +1,176 @@
+<?php
+include 'db.php';
+
+// Fetch the latest jobs from the database
+$query = "SELECT id, company_logo, job_title, company_name, company_location FROM jobs ORDER BY created_at DESC LIMIT 4";
+$result = $conn->query($query);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>JobGhana - Home</title>
+    <?php include 'cdn.php'; ?>
+    <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/home.css">
 </head>
+
 <body>
-    <h1>JobGhana</h1>
+    <!-- Navigation Bar -->
+    <?php include 'navbar.php'; ?>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Find Your Dream Job in Ghana</h1>
+            <p>Connecting talents with opportunities</p>
+            <form id="job-search-form" class="search-form">
+                <input type="text" id="search-keyword" placeholder="Job title, keyword, or location" required>
+                <button type="button" onclick="searchJobs()">Search Jobs</button>
+            </form>
+        </div>
+        <div class="hero_image">
+            <img src="./images/hero.png" alt="">
+        </div>
+    </section>
+    <section>
+        <div class="partners_all">
+            <div class="partners_title">
+                <h1>Partners &amp; Sponsors</h1>
+            </div>
+            <div class="partners_swiper">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper logos_swipers">
+                    <div class="swiper-slide">
+                            <img src="./images/nhis.jpg" alt="Nhis">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="./images/GHACEM.png" alt="Ghacem">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="./images/Gtv.png" alt="GTV">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="./images/Gmc.png" alt="GMC">
+                        </div>
+                    
+                        <div class="swiper-slide">
+                            <img src="./images/gtp.png" alt="GTP">
+                        </div>
+                        
+                        <div class="swiper-slide">
+                            <img src="./images/total.png" alt="Total">
+                        </div>
+                        
+                        <div class="swiper-slide">
+                            <img src="./images/fanMilk.jpg" alt="FanMilk">
+                        </div>
+
+                        <div class="swiper-slide">
+                            <img src="./images/Korelebu.jpg" alt="FanMilk">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="./images/gra.png" alt="GRA">
+                        </div>
+                        
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Jobs Section -->
+    <section class="featured-jobs">
+    <div class="feature_title">
+    <h2>Featured Jobs</h2>
+    </div>
+        <div class="job-listings" id="job-listings">
+            <?php if ($result->num_rows > 0): ?>
+                <?php while ($row = $result->fetch_assoc()): ?>
+                    <div class="job-card">
+                        <img src="<?php echo htmlspecialchars($row['company_logo']); ?>" alt="Company Logo">
+                        <div class="job_details">
+                            <h3><?php echo htmlspecialchars($row['job_title']); ?></h3>
+                            <p><?php echo htmlspecialchars($row['company_name']); ?></p>
+                            <p>Location: <?php echo htmlspecialchars($row['company_location']); ?></p>
+                            <div class="btn">
+                                <button>
+                                    <a href="view_job.php?id=<?php echo $row['id']; ?>">View Job</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                <?php endwhile; ?>
+            <?php else: ?>
+                <p>No featured jobs available at the moment.</p>
+            <?php endif; ?>
+        </div>
+        <p class="no-jobs-message" id="no-jobs-message">No jobs found. Please try a different search.</p>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us">
+        <h2>Why Choose JobGhana?</h2>
+        <div class="benefits">
+            <div class="benefit">
+                <i class="fa-solid fa-briefcase"></i>
+                <h3>Vast Job Opportunities</h3>
+                <p>Access a wide range of job listings from top companies across Ghana.</p>
+            </div>
+            <div class="benefit">
+                <i class="fa-solid fa-users"></i>
+                <h3>Connect with Employers</h3>
+                <p>Build connections with employers and grow your professional network.</p>
+            </div>
+            <div class="benefit">
+                <i class="fa-solid fa-chart-line"></i>
+                <h3>Career Growth</h3>
+                <p>Enhance your career with the right opportunities and guidance.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function searchJobs() {
+            // Get the input value
+            var keyword = document.getElementById('search-keyword').value.toLowerCase();
+
+            // Get all job cards
+            var jobCards = document.getElementsByClassName('job-card');
+            var noJobsMessage = document.getElementById('no-jobs-message');
+            var jobsFound = false;
+
+            // Loop through each job card and display/hide based on search
+            for (var i = 0; i < jobCards.length; i++) {
+                var jobTitle = jobCards[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+                var jobLocation = jobCards[i].getElementsByTagName('p')[1].innerText.toLowerCase();
+
+                // Check if the job title or location matches the search input
+                if (jobTitle.includes(keyword) || jobLocation.includes(keyword)) {
+                    jobCards[i].style.display = "";
+                    jobsFound = true;
+                } else {
+                    jobCards[i].style.display = "none";
+                }
+            }
+
+            // Display "no jobs" message if no jobs are found
+            if (!jobsFound) {
+                noJobsMessage.style.display = "block";
+            } else {
+                noJobsMessage.style.display = "none";
+            }
+        }
+    </script>
+<script src="./js/swiper.js"></script>
 </body>
+
 </html>
+
+<?php
+$conn->close();
+?>

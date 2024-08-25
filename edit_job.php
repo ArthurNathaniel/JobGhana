@@ -62,7 +62,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if ($stmt->execute()) {
-        echo "Job updated successfully.";
+        echo " <script>alert('Job updated successfully.');</script>";
+        echo "<script>window.location.replace('view_jobs.php');</script>"; 
+
     } else {
         echo "Error: " . $stmt->error;
     }

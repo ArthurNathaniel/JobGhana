@@ -25,12 +25,27 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows === 0) {
-    echo "Job not found or you do not have permission to delete this job.";
+    echo "<script>alert('Job not found or you do not have permission to delete this job.');</script>";
+    echo "<script>window.location.replace('view_jobs.php');</script>"; 
     exit();
 }
 
 $job = $result->fetch_assoc();
 $stmt->close();
+
+// Check if the job has any applications
+$stmt = $conn->prepare("SELECT COUNT(*) FROM job_applications WHERE job_id = ?");
+$stmt->bind_param("i", $jobId);
+$stmt->execute();
+$stmt->bind_result($applicationCount);
+$stmt->fetch();
+$stmt->close();
+
+if ($applicationCount > 0) {
+    echo "<script>alert('Cannot delete job because there are associated job applications.');</script>";
+    echo "<script>window.location.replace('view_jobs.php');</script>"; 
+    exit();
+}
 
 // Delete job from the database
 $stmt = $conn->prepare("DELETE FROM jobs WHERE id = ? AND employer_id = ?");
@@ -41,7 +56,8 @@ if ($stmt->execute()) {
     if (!empty($job['company_logo']) && file_exists($job['company_logo'])) {
         unlink($job['company_logo']);
     }
-    echo "Job deleted successfully.";
+    echo "<script>alert('Job deleted successfully.');</script>";
+    echo "<script>window.location.replace('view_jobs.php');</script>"; 
 } else {
     echo "Error: " . $stmt->error;
 }
