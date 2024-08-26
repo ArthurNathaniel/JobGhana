@@ -63,16 +63,8 @@ $conn->close();
     <meta name="author" content="JobGhana">
     <title>Edit Job Seeker Profile - JobGhana</title>
     <link rel="stylesheet" href="./css/base.css">
-    <link rel="stylesheet" href="./css/form.css">
-    <style>
-        .profile-section {
-            margin-bottom: 15px;
-        }
-        img {
-            max-width: 100px;
-            max-height: 100px;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/profile.css">
+    
 <script src="https://cdn.tiny.cloud/1/zfduric1ly2fmnq9xzc5iu2oql6wk6ljmn2jezstfrbfsvor/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
         tinymce.init({
@@ -84,6 +76,9 @@ $conn->close();
     </script>
 </head>
 <body>
+<div class="all_pages">
+   <?php include 'sidebar.php' ?>
+   <div class="main_page">
     <h2>Edit Job Seeker Profile</h2>
     <form method="POST" action="" enctype="multipart/form-data">
         <div class="profile-section">
@@ -105,8 +100,13 @@ $conn->close();
             <label for="education">Education:</label>
             <textarea name="education" id="education"><?php echo htmlspecialchars($education); ?></textarea>
         </div>
-        <button type="submit">Save Changes</button>
+       <div class="edit_profile_btns">
+       <button type="submit">Save Changes</button>
+       <a href="profile.php">Cancel</a>
+       </div>
     </form>
-    <a href="profile.php">Cancel</a>
+  
+    </div>
+    </div>
 </body>
 </html>

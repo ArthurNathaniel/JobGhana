@@ -19,7 +19,41 @@
     border: none;
     cursor: pointer;
 }
+.profile-section {
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+}
+img {
+    max-width: 100px;
+    max-height: 100px;
+}
+.profile-section label{   
+    font-weight: 700;
+    color: #1c5947;
+    font-family: "Sora", sans-serif;
+    margin-block: 10px;
+}
 
+.edit_profile_btns{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.edit_profile_btns button{
+    background-color: #1c5947;
+    color: #fff;
+    padding: 15px 45px;
+    border: none;
+    cursor: pointer; 
+}
+
+.edit_profile_btns a{
+    color: #000;
+    align-items: center;
+    display: flex;
+}
 @media only screen and (max-width: 850px) {
 
 }

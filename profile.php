@@ -34,21 +34,7 @@ $conn->close();
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/profile.css">
     <style>
-        .profile-section {
-            margin-bottom: 5px;
-            display: flex;
-            flex-direction: column;
-        }
-        img {
-            max-width: 100px;
-            max-height: 100px;
-        }
-        .profile-section label{   
-            font-weight: 700;
-            color: #1c5947;
-            font-family: "Sora", sans-serif;
-            margin-block: 10px;
-        }
+      
     </style>
 </head>
 <body>
