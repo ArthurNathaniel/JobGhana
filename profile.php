@@ -30,15 +30,24 @@ $conn->close();
     <meta name="keywords" content="job seeker profile, JobGhana, work experience, skills, education">
     <meta name="author" content="JobGhana">
     <title>Job Seeker Profile - JobGhana</title>
+    <?php include 'cdn.php' ?>
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/profile.css">
     <style>
         .profile-section {
-            margin-bottom: 15px;
+            margin-bottom: 5px;
+            display: flex;
+            flex-direction: column;
         }
         img {
             max-width: 100px;
             max-height: 100px;
+        }
+        .profile-section label{   
+            font-weight: 700;
+            color: #1c5947;
+            font-family: "Sora", sans-serif;
+            margin-block: 10px;
         }
     </style>
 </head>
@@ -68,7 +77,11 @@ $conn->close();
         <label>Education:</label>
         <p><?php echo $education; ?></p>
     </div>
-    <a href="edit_profile.php">Edit Profile</a>
+ <div class="edit_profile">
+ <a href="edit_profile.php">
+    <button>Edit Profile</button>
+ </a>
+ </div>
    </div>
    </div>
 </body>

@@ -131,7 +131,7 @@ form {
     width: 250px;
     object-fit: contain;
     background-color: #fff;
-    /* border: 2px solid #000; */
+    z-index: 56;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 

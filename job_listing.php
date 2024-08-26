@@ -7,13 +7,50 @@ if (!isset($_SESSION['job_seeker_id'])) {
     exit();
 }
 
-// Fetch job listings
-$stmt = $conn->prepare("SELECT id, company_logo, job_title, company_name, company_location, job_type, salary FROM jobs");
+// Function to calculate time difference
+// Function to calculate time difference
+function timeAgo($datetime, $full = false) {
+    try {
+        $now = new DateTime;
+        $ago = new DateTime($datetime);
+        $diff = $now->diff($ago);
+
+        // Calculate weeks manually
+        $weeks = floor($diff->days / 7); // Use days to calculate weeks
+        $days = $diff->days % 7; // Remainder days after weeks calculation
+
+        $string = [
+            'y' => $diff->y . ' year' . ($diff->y > 1 ? 's' : ''),
+            'm' => $diff->m . ' month' . ($diff->m > 1 ? 's' : ''),
+            'w' => $weeks . ' week' . ($weeks > 1 ? 's' : ''),
+            'd' => $days . ' day' . ($days > 1 ? 's' : ''),
+            'h' => $diff->h . ' hour' . ($diff->h > 1 ? 's' : ''),
+            'i' => $diff->i . ' minute' . ($diff->i > 1 ? 's' : ''),
+            's' => $diff->s . ' second' . ($diff->s > 1 ? 's' : ''),
+        ];
+
+        // Remove empty time periods
+        foreach ($string as $k => &$v) {
+            if ($v === '0 year' || $v === '0 month' || $v === '0 week' || $v === '0 day' || $v === '0 hour' || $v === '0 minute' || $v === '0 second') {
+                unset($string[$k]);
+            }
+        }
+
+        if (!$full) $string = array_slice($string, 0, 1); // Show only the largest time unit
+        return $string ? implode(', ', $string) . ' ago' : 'just now';
+    } catch (Exception $e) {
+        return 'Unknown time';
+    }
+}
+
+
+
+// Fetch job listings with the latest jobs first
+$stmt = $conn->prepare("SELECT id, company_logo, job_title, company_name, company_location, job_type, salary, created_at FROM jobs ORDER BY created_at DESC");
 $stmt->execute();
 $result = $stmt->get_result();
 $conn->close();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,78 +64,6 @@ $conn->close();
     <title>Job Listings - JobGhana</title>
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/job_listings.css">
-    <style>
-        .job_card {
-            border: 2px solid #ddd;
-            padding: 10px;
-            margin-bottom: 20px;
-            display: flex;
-            position: relative;
-            gap: 20px;
-            text-decoration: none;
-            color: inherit;
-            background-color: #fff;
-        }
-
-        .job_image img {
-            height: 150px;
-            width: 150px;
-            object-fit: cover;
-            border: 2px solid #ddd;
-        }
-
-        .job_details {
-            display: flex;
-            flex-direction: column;
-            align-self: center;
-        }
-
-        .job_details h2 {
-            margin: 0;
-        }
-
-        .job_details p {
-            margin: 5px 0;
-        }
-
-        .apply_button {
-            margin-top: 10px;
-            padding: 10px;
-            background-color: #007bff;
-            color: #fff;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            border-radius: 5px;
-        }
-
-        .apply_button:hover {
-            background-color: #0056b3;
-        }
-
-        .view_job {
-            color: #000;
-            text-decoration: none;
-        }
-
-        .job_l {
-            padding: 0 5%;
-        }
-
-        .job_ocon {
-            position: absolute;
-            right: 20px;
-            cursor: pointer;
-        }
-
-        .job_ocon i {
-            color: #1c5947;
-        }
-        .jobs_flex{
-            display: flex;
-            gap: 20px;
-        }
-    </style>
     <script>
         function bookmarkJob(jobId) {
             const xhr = new XMLHttpRequest();
@@ -119,6 +84,7 @@ $conn->close();
 </head>
 
 <body>
+    <?php include 'home_navbar.php'; ?>
     <div class="all_pages">
         <?php include 'sidebar.php'; ?>
         <div class="main_page job_l">
@@ -133,11 +99,12 @@ $conn->close();
                             <h2><?php echo htmlspecialchars($row['job_title']); ?></h2>
                             <h4><?php echo htmlspecialchars($row['company_name']); ?></h4>
                             <div class="jobs_flex">
-                            <p>Location: <?php echo htmlspecialchars($row['company_location']); ?></p>
-                            <p>Job Type: <?php echo htmlspecialchars($row['job_type']); ?></p>
+                                <p>Location: <?php echo htmlspecialchars($row['company_location']); ?></p>
+                                <p>Job Type: <?php echo htmlspecialchars($row['job_type']); ?></p>
                             </div>
                             <p>Salary: <?php echo htmlspecialchars($row['salary']); ?></p>
-                        </div>
+                            <p>Posted: <?php echo htmlspecialchars(timeAgo($row['created_at'])); ?></p>
+                            </div>
                         <div class="job_ocon" onclick="bookmarkJob(<?php echo $row['id']; ?>)">
                             <h1><i class="fa-solid fa-bookmark"></i></h1>
                         </div>

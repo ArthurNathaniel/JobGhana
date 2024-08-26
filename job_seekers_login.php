@@ -58,6 +58,9 @@ $conn->close();
        <div class="forms">
        <button type="submit">Login</button>
        </div>
+       <div class="forms">
+        <p>New to JobGhana? <a href="job_seekers_signup.php">Create an account</a></p>
+       </div>
     </form>
   </div>
 </body>

@@ -1,12 +1,10 @@
 <div class="navbar_all">
     <div class="logo"></div>
-  <div class="links">
+  <div class="links home_links">
     <a href="">Home</a>
     <a href="">About JobGhana</a>
- <div class="accounts">
  <a href="">For Employers</a>
  <a href="">For Job Seekers</a>
- </div>
   </div>
  
     <button id="toggleButton">

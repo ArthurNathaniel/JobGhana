@@ -1,0 +1,93 @@
+.job_card {
+    border: 2px solid #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    position: relative;
+    gap: 20px;
+    text-decoration: none;
+    color: inherit;
+    background-color: #fff;
+    margin-top: 30px;
+}
+
+.job_image img {
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    border: 2px solid #ddd;
+}
+
+.job_details {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+.job_details h2 {
+    margin: 0;
+}
+
+.job_details p {
+    margin: 5px 0;
+}
+
+.apply_button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.apply_button:hover {
+    background-color: #0056b3;
+}
+
+.view_job {
+    color: #000;
+    text-decoration: none;
+}
+
+.job_l {
+    padding: 0 5%;
+}
+
+.job_ocon {
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
+}
+
+.job_ocon i {
+    color: #1c5947;
+}
+.jobs_flex{
+    display: flex;
+    gap: 20px;
+}
+
+
+
+@media only screen and (max-width: 850px) {
+    .job_card {
+      
+        display: flex;
+        flex-direction: column;
+    }
+    .job_details{
+        width: 100%;
+    }
+    .job_details h2{
+        font-size: 20px;
+    }
+    .jobs_flex{
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+   
+}

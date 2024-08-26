@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        echo "An account with this email already exists.";
+        echo "<script>alert('An account with this email already exists.');</script>";
     } else {
         // Insert new job seeker into database
         $stmt = $conn->prepare("INSERT INTO job_seekers (full_name, date_of_birth, gender, email, phone_number, password) VALUES (?, ?, ?, ?, ?, ?)");
