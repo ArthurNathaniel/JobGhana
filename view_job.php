@@ -30,6 +30,7 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Job - JobGhana</title>
+    <?php include 'cdn.php';?>
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/view_job.css">
     <style>
@@ -47,8 +48,8 @@ $conn->close();
 
         .apply_button {
             margin-top: 20px;
-            padding: 10px;
-            background-color: #007bff;
+            padding: 15px 45px;
+            background-color: #1c5947;
             color: #fff;
             text-align: center;
             text-decoration: none;
@@ -57,7 +58,7 @@ $conn->close();
         }
 
         .apply_button:hover {
-            background-color: #0056b3;
+            background-color: #1c5947;
         }
     </style>
 </head>
@@ -74,7 +75,7 @@ $conn->close();
                 <p><strong>Location:</strong> <?php echo htmlspecialchars($job['company_location']); ?></p>
                 <p><strong>Job Type:</strong> <?php echo htmlspecialchars($job['job_type']); ?></p>
                 <p><strong>Salary:</strong> <?php echo htmlspecialchars($job['salary']); ?></p>
-                <p><strong>About the Role:</strong> <?php echo htmlspecialchars($job['about_role']); ?></p>
+                <p><strong>About the Role:</strong> <?php echo $job['about_role']; ?></p>
                 <a href="apply_job.php?id=<?php echo $jobId; ?>" class="apply_button">Apply Now</a>
             </div>
         </div>

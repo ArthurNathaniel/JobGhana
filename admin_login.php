@@ -30,17 +30,35 @@ $conn->close();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login</title>
+    <?php include 'cdn.php' ?>
+    <title>Admin Login - JobGhana</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/login.css">
 </head>
+
 <body>
-    <h2>Admin Login</h2>
-    <form method="POST" action="">
-        <input type="email" name="email" placeholder="Email" required><br>
-        <input type="password" name="password" placeholder="Password" required><br>
-        <button type="submit">Login</button>
-    </form>
+    <?php include 'header.php' ?>
+
+    <div class="login_all">
+        <h2>Admin Login</h2>
+        <form method="POST" action="">
+            <div class="forms">
+                <label>Email Address:</label>
+                <input type="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="forms">
+            <label>Password:</label>
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+            <div class="forms">
+                <button type="submit">Login</button>
+            </div>
+        </form>
+    </div>
 </body>
+
 </html>

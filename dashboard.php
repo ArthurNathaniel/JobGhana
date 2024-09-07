@@ -31,7 +31,7 @@ $conn->close();
     <link rel="stylesheet" href="./css/dashboarsd.css">
 </head>
 <body>
-    
+<?php include 'home_navbar.php'; ?>
     <div class="dashboard_all">
     <?php include 'sidebar.php' ?>
 
@@ -40,82 +40,7 @@ $conn->close();
     <h2>Welcome to Your Dashboard</h2>
     <?php if ($approved): ?>
         <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-
-
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-
-
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-
-
-
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
-        <p>Your account has been approved. You can now access the full dashboard features.</p>
+ 
         <!-- Display additional dashboard features here -->
     <?php else: ?>
         <p>Your registration is pending approval. Please wait for an admin to review your information.</p>

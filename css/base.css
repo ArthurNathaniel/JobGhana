@@ -103,7 +103,7 @@ h6 {
 
 
 .home_links {
-    height: 350px;
+    height: 400px;
     background-color: #fff !important;
     z-index: 856;
 
@@ -202,15 +202,101 @@ h6 {
     height: 100%;
     object-fit: cover;
 }
-
 .log{
-    background-color: #8d0303;
+    background-color: #8d0303 !important;
     color: #fff !important;
 }
+
 .log:hover{
-    background-color: #8d0303;
+    background-color: #8d0303 !important;
 }
 
+footer {
+    background-color: #1c5947;
+    color: #fff;
+    padding: 40px 0;
+    text-align: left;
+    margin-top: 20px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex: 1;
+    margin: 15px;
+    min-width: 250px;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.footer-section p,
+.footer-section ul {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+
+.footer-section a{
+    color: #fff;
+    text-decoration: none;
+}
+.footer-bottom {
+    text-align: center;
+    padding: 15px 0;
+    border-top: 2px dashed #ddd;
+    margin-top: 20px;
+    font-size: 14px;
+    width: 100%;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+ th,  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+ th {
+    background-color: #1c5947;
+    color: #fff;
+    text-align: left;
+}
+.back a{
+    color: #333;
+    text-decoration: none;
+}
 @media only screen and (max-width: 1110px) {
     .all_pages {
         display: flex;
@@ -242,12 +328,14 @@ h6 {
     }
     .log{
         background-color: transparent;
-        color: #333 !important;
+        color: #fff !important;
     }
     .log:hover{
         background-color: #8d0303 !important;
         color: #fff !important;
     }
+
+   
 
 }
 

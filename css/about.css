@@ -1,0 +1,28 @@
+.about-us {
+    padding: 0 20px;
+    background-color: #f9f9f9;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+    margin-block: 60px;
+}
+
+.container h1, h2 {
+    color: #333;
+    margin-block: 20px;
+}
+
+.container p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+
+
+.container i{
+    color: #1c5947;
+}

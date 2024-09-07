@@ -78,8 +78,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
 <?php include 'navbar.php'; ?>
     <div class="all_pages">
-        <?php include 'sidebar.php'; ?>
-        <div class="main_page ">
+    <?php include 'sidebar_employer.php'; ?>
+    <div class="main_page ">
             <h2>Add Job Listing</h2>
             <form method="POST" action="" enctype="multipart/form-data">
                 <div class="forms">

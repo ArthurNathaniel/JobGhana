@@ -8,84 +8,88 @@ if (!isset($_SESSION['admin_id'])) {
     exit();
 }
 
+// Handle approval action
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['approve'])) {
+    $employerId = $_POST['employer_id'];
+
+    // Update the employer's approval status to approved
+    $stmt = $conn->prepare("UPDATE employers SET approved = 1 WHERE id = ?");
+    $stmt->bind_param("i", $employerId);
+
+    if ($stmt->execute()) {
+        $message = "Employer approved successfully.";
+    } else {
+        $message = "Error: " . $stmt->error;
+    }
+
+    $stmt->close();
+}
+
 // Fetch approved employers with their company details
 $query = "
-    SELECT e.id, e.full_name, e.work_email, cd.registered_company_name, cd.trading_company_name, cd.company_email, cd.company_phone_number, cd.company_type, cd.business_certificate, cd.contact_number, cd.location, cd.ghana_card_id
+    SELECT e.id, e.full_name, e.work_email, cd.registered_company_name, cd.trading_company_name, cd.company_email, cd.company_phone_number, cd.company_type, cd.business_certificate, cd.contact_number, cd.location, cd.ghana_card_id, e.approved
     FROM employers e
     JOIN company_details cd ON e.id = cd.employer_id
-    WHERE e.approved = 1
 ";
 $result = $conn->query($query);
 
 $conn->close();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Approved Employers</title>
-    <style>
-        .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 1; 
-            left: 0; 
-            top: 0; 
-            width: 100%; 
-            height: 100%; 
-            overflow: auto; 
-            background-color: rgb(0,0,0); 
-            background-color: rgba(0,0,0,0.4); 
-        }
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto; 
-            padding: 20px; 
-            border: 1px solid #888;
-            width: 80%; 
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-    </style>
+    <?php include 'cdn.php'; ?>
+    <title>Approved Employers - JobGhana</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/approval.css">
 </head>
+
 <body>
-    <h2>Approved Employers</h2>
-    <?php if ($result->num_rows > 0): ?>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php while ($row = $result->fetch_assoc()): ?>
+    <?php include 'home_navbar.php'; ?>
+    <div class="approval_all">
+        <h2>Approved Employers</h2>
+
+        <?php if (isset($message)): ?>
+            <script>
+                alert("<?php echo addslashes($message); ?>");
+            </script>
+        <?php endif; ?>
+
+        <?php if ($result->num_rows > 0): ?>
+            <table border="1">
+                <thead>
                     <tr>
-                        <td><?php echo htmlspecialchars($row['full_name']); ?></td>
-                        <td><?php echo htmlspecialchars($row['work_email']); ?></td>
-                        <td>
-                            <button onclick="openModal('<?php echo $row['id']; ?>')">View Details</button>
-                        </td>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Action</th>
                     </tr>
-                <?php endwhile; ?>
-            </tbody>
-        </table>
-    <?php else: ?>
-        <p>No approved employers.</p>
-    <?php endif; ?>
+                </thead>
+                <tbody>
+                    <?php while ($row = $result->fetch_assoc()): ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($row['full_name']); ?></td>
+                            <td><?php echo htmlspecialchars($row['work_email']); ?></td>
+                            <td>
+                                <?php if ($row['approved'] == 1): ?>
+                                    <button onclick="openModal('<?php echo $row['id']; ?>')">View Details</button>
+                                <?php else: ?>
+                                    <form method="POST" action="">
+                                        <input type="hidden" name="employer_id" value="<?php echo $row['id']; ?>">
+                                        <button type="submit" name="approve">Approve</button>
+                                    </form>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
+                </tbody>
+            </table>
+        <?php else: ?>
+            <p>No approved employers.</p>
+        <?php endif; ?>
+    </div>
 
     <!-- Modal -->
     <div id="employerModal" class="modal">
@@ -124,4 +128,5 @@ $conn->close();
         }
     </script>
 </body>
+
 </html>

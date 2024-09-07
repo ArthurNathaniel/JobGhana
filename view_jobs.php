@@ -31,8 +31,8 @@ $result = $stmt->get_result();
 <?php include 'navbar.php'; ?>
 
     <div class="all_pages">
-        <?php include 'sidebar.php'; ?>
-        <div class="main_page job_listing_view">
+    <?php include 'sidebar_employer.php'; ?>
+    <div class="main_page job_listing_view">
             <h2>Your Jobs</h2>
             <table class="job-listing-table">
                 <thead>

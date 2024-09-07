@@ -37,8 +37,8 @@ $result = $stmt->get_result();
 <?php include 'navbar.php'; ?>
 
     <div class="all_pages">
-        <?php include 'sidebar.php'; ?>
-        <div class="main_page">
+    <?php include 'sidebar_employer.php'; ?>
+    <div class="main_page">
             <h2>Job Applications</h2>
             <?php if ($result->num_rows > 0): ?>
                 <?php while ($application = $result->fetch_assoc()): ?>

@@ -53,3 +53,10 @@ color: #1c5947;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
+
+@media only screen and (max-width: 1110px) {
+    .signup_all{
+        padding: 0 5%;
+        margin-block: 50px;
+    }
+ }

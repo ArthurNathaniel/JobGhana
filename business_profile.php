@@ -34,7 +34,7 @@ $conn->close();
 <body>
 <?php include 'navbar.php'; ?>
     <div class="all_pages">
-        <?php include 'sidebar.php'; ?>
+        <?php include 'sidebar_employer.php'; ?>
         <div class="main_page">
             <div class="company_details_container">
                 <div class="company_details_header">

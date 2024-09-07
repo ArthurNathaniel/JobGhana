@@ -23,6 +23,7 @@ $conn->close();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,41 +35,44 @@ $conn->close();
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/profile.css">
     <style>
-      
+
     </style>
 </head>
+
 <body>
-   <div class="all_pages">
-   <?php include 'sidebar.php' ?>
-   <div class="main_page">
-   <h2>Job Seeker Profile</h2>
-    <h3>Welcome, <?php echo htmlspecialchars($fullName); ?>!</h3>
-    <div class="profile-section">
-        <label>Profile Picture:</label>
-        <?php if ($profilePicture): ?>
-            <img src="<?php echo htmlspecialchars($profilePicture); ?>" alt="Profile Picture">
-        <?php else: ?>
-            <p>No profile picture uploaded.</p>
-        <?php endif; ?>
+    <?php include 'home_navbar.php'; ?>
+    <div class="all_pages">
+        <?php include 'sidebar.php' ?>
+        <div class="main_page">
+            <h2>Job Seeker Profile</h2>
+            <h3>Welcome, <?php echo htmlspecialchars($fullName); ?>!</h3>
+            <div class="profile-section">
+                <label>Profile Picture:</label>
+                <?php if ($profilePicture): ?>
+                    <img src="<?php echo htmlspecialchars($profilePicture); ?>" alt="Profile Picture">
+                <?php else: ?>
+                    <p>No profile picture uploaded.</p>
+                <?php endif; ?>
+            </div>
+            <div class="profile-section">
+                <label>Work Experience:</label>
+                <p><?php echo $workExperience; ?></p>
+            </div>
+            <div class="profile-section">
+                <label>Interests and Skills:</label>
+                <p><?php echo $interestsSkills; ?></p>
+            </div>
+            <div class="profile-section">
+                <label>Education:</label>
+                <p><?php echo $education; ?></p>
+            </div>
+            <div class="edit_profile">
+                <a href="edit_profile.php">
+                    <button>Edit Profile</button>
+                </a>
+            </div>
+        </div>
     </div>
-    <div class="profile-section">
-        <label>Work Experience:</label>
-        <p><?php echo $workExperience; ?></p>
-    </div>
-    <div class="profile-section">
-        <label>Interests and Skills:</label>
-        <p><?php echo $interestsSkills; ?></p>
-    </div>
-    <div class="profile-section">
-        <label>Education:</label>
-        <p><?php echo $education; ?></p>
-    </div>
- <div class="edit_profile">
- <a href="edit_profile.php">
-    <button>Edit Profile</button>
- </a>
- </div>
-   </div>
-   </div>
 </body>
+
 </html>

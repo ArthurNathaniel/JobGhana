@@ -61,8 +61,8 @@ $conn->close();
 <body>
 <?php include 'navbar.php'; ?>
     <div class="all_pages">
-        <?php include 'sidebar.php'; ?>
-        <div class="main_page">
+    <?php include 'sidebar_employer.php'; ?>
+    <div class="main_page">
          <h1>Accont Setting</h1>
          <div class="account_setting">
             <div class="account_icons">

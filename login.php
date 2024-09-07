@@ -8,29 +8,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $stmt = $conn->prepare("SELECT id, password, approved, profile_completed FROM employers WHERE work_email = ?");
+    // Debugging output
+    echo "Email: $email<br>";
+    echo "Password: $password<br>";
+
+    $stmt = $conn->prepare("SELECT id, password, profile_completed FROM employers WHERE work_email = ?");
+    if (!$stmt) {
+        die("Prepare failed: (" . $conn->errno . ") " . $conn->error);
+    }
+
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
-    $stmt->bind_result($employerId, $hashedPassword, $approved, $profileCompleted);
+    $stmt->bind_result($employerId, $hashedPassword, $profileCompleted);
 
-    if ($stmt->fetch() && password_verify($password, $hashedPassword)) {
-        if (!$profileCompleted) {
-            // Redirect to company details if profile is not completed
-            $_SESSION['employer_id'] = $employerId;
-            header("Location: company_details.php");
-            exit();
-        } elseif (!$approved) {
-            // Inform the user if their account is pending approval
-            echo "Your account is pending approval.";
+    if ($stmt->fetch()) {
+        echo "User found. ID: $employerId<br>";
+        // Debugging output
+        echo "Hashed Password from DB: $hashedPassword<br>";
+        
+        if (password_verify($password, $hashedPassword)) {
+            echo "Password verified<br>";
+
+            if (!$profileCompleted) {
+                // Redirect to company details if profile is not completed
+                $_SESSION['employer_id'] = $employerId;
+                header("Location: company_details.php");
+                exit();
+            } else {
+                // Redirect to the dashboard
+                $_SESSION['employer_id'] = $employerId;
+                header("Location: business_profile.php");
+                exit();
+            }
         } else {
-            // Redirect to the dashboard if approved
-            $_SESSION['employer_id'] = $employerId;
-            header("Location: dashboard.php");
-            exit();
+            echo "Password does not match<br>";
         }
     } else {
-        echo "Invalid email or password.";
+        echo "User not found or invalid email/password.<br>";
     }
 
     $stmt->close();
@@ -72,6 +87,9 @@ $conn->close();
             </div>
             <div class="forms">
                 <button type="submit">Login</button>
+            </div>
+            <div class="forms">
+                <p>New to JobGhana? <a href="signup.php">Create an account</a></p>
             </div>
         </form>
     </div>

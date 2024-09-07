@@ -44,3 +44,11 @@
 .forms a{
     color: #1c5947;
  }
+
+
+ @media only screen and (max-width: 1110px) {
+    .login_all{
+        padding: 0 5%;
+        margin-block: 50px;
+    }
+ }

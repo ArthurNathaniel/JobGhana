@@ -61,6 +61,7 @@ $conn->close();
     <meta name="description" content="Edit your profile on JobGhana by updating your work experience, skills, and education, and upload a new profile picture to enhance your profile.">
     <meta name="keywords" content="edit job seeker profile, JobGhana, work experience, skills, education">
     <meta name="author" content="JobGhana">
+    <?php include 'cdn.php'; ?>
     <title>Edit Job Seeker Profile - JobGhana</title>
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/profile.css">

@@ -1,0 +1,22 @@
+.terms-of-service {
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.container h1, h2 {
+    color: #333;
+    margin-block: 20px;
+}
+
+.container i {
+    color: #1c5947;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
